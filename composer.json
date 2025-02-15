@@ -1,0 +1,11 @@
+{
+    "name": "mycompany/my-app",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Helpers\\": "helpers/",
+            "config\\": "config/"
+        }
+    },
+    "require": {}
+}
