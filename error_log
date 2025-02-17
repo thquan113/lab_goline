@@ -1,0 +1,88 @@
+[17-Feb-2025 09:19:49 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method mysqli_result::fetch_all() in /home/tquanthid/public_html/App/Models/BaseModel.php:24
+Stack trace:
+#0 /home/tquanthid/public_html/App/Controllers/HomeController.php(30): App\Models\BaseModel->getAll()
+#1 [internal function]: App\Controllers\HomeController->index()
+#2 /home/tquanthid/public_html/routes/route.php(61): call_user_func_array(Array, Array)
+#3 /home/tquanthid/public_html/index.php(35): routes\route::dispatch()
+#4 {main}
+  thrown in /home/tquanthid/public_html/App/Models/BaseModel.php on line 24
+[17-Feb-2025 09:19:50 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method mysqli_result::fetch_all() in /home/tquanthid/public_html/App/Models/BaseModel.php:24
+Stack trace:
+#0 /home/tquanthid/public_html/App/Controllers/HomeController.php(30): App\Models\BaseModel->getAll()
+#1 [internal function]: App\Controllers\HomeController->index()
+#2 /home/tquanthid/public_html/routes/route.php(61): call_user_func_array(Array, Array)
+#3 /home/tquanthid/public_html/index.php(35): routes\route::dispatch()
+#4 {main}
+  thrown in /home/tquanthid/public_html/App/Models/BaseModel.php on line 24
+[17-Feb-2025 09:19:51 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method mysqli_result::fetch_all() in /home/tquanthid/public_html/App/Models/BaseModel.php:24
+Stack trace:
+#0 /home/tquanthid/public_html/App/Controllers/HomeController.php(30): App\Models\BaseModel->getAll()
+#1 [internal function]: App\Controllers\HomeController->index()
+#2 /home/tquanthid/public_html/routes/route.php(61): call_user_func_array(Array, Array)
+#3 /home/tquanthid/public_html/index.php(35): routes\route::dispatch()
+#4 {main}
+  thrown in /home/tquanthid/public_html/App/Models/BaseModel.php on line 24
+[17-Feb-2025 09:19:51 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method mysqli_result::fetch_all() in /home/tquanthid/public_html/App/Models/BaseModel.php:24
+Stack trace:
+#0 /home/tquanthid/public_html/App/Controllers/HomeController.php(30): App\Models\BaseModel->getAll()
+#1 [internal function]: App\Controllers\HomeController->index()
+#2 /home/tquanthid/public_html/routes/route.php(61): call_user_func_array(Array, Array)
+#3 /home/tquanthid/public_html/index.php(35): routes\route::dispatch()
+#4 {main}
+  thrown in /home/tquanthid/public_html/App/Models/BaseModel.php on line 24
+[17-Feb-2025 09:20:38 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method mysqli_result::fetch_all() in /home/tquanthid/public_html/App/Models/BaseModel.php:24
+Stack trace:
+#0 /home/tquanthid/public_html/App/Controllers/HomeController.php(30): App\Models\BaseModel->getAll()
+#1 [internal function]: App\Controllers\HomeController->index()
+#2 /home/tquanthid/public_html/routes/route.php(61): call_user_func_array(Array, Array)
+#3 /home/tquanthid/public_html/index.php(35): routes\route::dispatch()
+#4 {main}
+  thrown in /home/tquanthid/public_html/App/Models/BaseModel.php on line 24
+[17-Feb-2025 09:21:43 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method mysqli_result::fetch_all() in /home/tquanthid/public_html/App/Models/BaseModel.php:24
+Stack trace:
+#0 /home/tquanthid/public_html/App/Controllers/HomeController.php(30): App\Models\BaseModel->getAll()
+#1 [internal function]: App\Controllers\HomeController->index()
+#2 /home/tquanthid/public_html/routes/route.php(61): call_user_func_array(Array, Array)
+#3 /home/tquanthid/public_html/index.php(35): routes\route::dispatch()
+#4 {main}
+  thrown in /home/tquanthid/public_html/App/Models/BaseModel.php on line 24
+[17-Feb-2025 09:28:40 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method mysqli_result::fetch_all() in /home/tquanthid/public_html/App/Models/BaseModel.php:24
+Stack trace:
+#0 /home/tquanthid/public_html/App/Controllers/HomeController.php(30): App\Models\BaseModel->getAll()
+#1 [internal function]: App\Controllers\HomeController->index()
+#2 /home/tquanthid/public_html/routes/route.php(61): call_user_func_array(Array, Array)
+#3 /home/tquanthid/public_html/index.php(35): routes\route::dispatch()
+#4 {main}
+  thrown in /home/tquanthid/public_html/App/Models/BaseModel.php on line 24
+[17-Feb-2025 09:28:40 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method mysqli_result::fetch_all() in /home/tquanthid/public_html/App/Models/BaseModel.php:24
+Stack trace:
+#0 /home/tquanthid/public_html/App/Controllers/HomeController.php(30): App\Models\BaseModel->getAll()
+#1 [internal function]: App\Controllers\HomeController->index()
+#2 /home/tquanthid/public_html/routes/route.php(61): call_user_func_array(Array, Array)
+#3 /home/tquanthid/public_html/index.php(35): routes\route::dispatch()
+#4 {main}
+  thrown in /home/tquanthid/public_html/App/Models/BaseModel.php on line 24
+[17-Feb-2025 09:51:52 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method mysqli_result::fetch_all() in /home/tquanthid/public_html/App/Models/BaseModel.php:143
+Stack trace:
+#0 /home/tquanthid/public_html/App/Controllers/HomeController.php(122): App\Models\BaseModel->search('%c%')
+#1 [internal function]: App\Controllers\HomeController->search()
+#2 /home/tquanthid/public_html/routes/route.php(61): call_user_func_array(Array, Array)
+#3 /home/tquanthid/public_html/index.php(36): routes\route::dispatch()
+#4 {main}
+  thrown in /home/tquanthid/public_html/App/Models/BaseModel.php on line 143
+[17-Feb-2025 09:51:58 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method mysqli_result::fetch_all() in /home/tquanthid/public_html/App/Models/BaseModel.php:143
+Stack trace:
+#0 /home/tquanthid/public_html/App/Controllers/HomeController.php(122): App\Models\BaseModel->search('%c%')
+#1 [internal function]: App\Controllers\HomeController->search()
+#2 /home/tquanthid/public_html/routes/route.php(61): call_user_func_array(Array, Array)
+#3 /home/tquanthid/public_html/index.php(36): routes\route::dispatch()
+#4 {main}
+  thrown in /home/tquanthid/public_html/App/Models/BaseModel.php on line 143
+[17-Feb-2025 09:55:09 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method PDOStatement::fetch_assoc() in /home/tquanthid/public_html/App/Models/BaseModel.php:27
+Stack trace:
+#0 /home/tquanthid/public_html/App/Controllers/HomeController.php(30): App\Models\BaseModel->getAll()
+#1 [internal function]: App\Controllers\HomeController->index()
+#2 /home/tquanthid/public_html/routes/route.php(61): call_user_func_array(Array, Array)
+#3 /home/tquanthid/public_html/index.php(36): routes\route::dispatch()
+#4 {main}
+  thrown in /home/tquanthid/public_html/App/Models/BaseModel.php on line 27

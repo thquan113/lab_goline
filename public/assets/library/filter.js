@@ -12,7 +12,7 @@
         $("#resultSearch").removeClass("p-3");
         $("#resultSearch").html("");
       } else {
-        const url = `http://localhost:3000/search`;
+        const url = `/search`;
         timer = setTimeout(function () {
           $.ajax({
             type: "GET",
@@ -186,7 +186,7 @@
     if (condition) {
       $.ajax({
         type: "GET",
-        url: `http://localhost:3000/filter`,
+        url: `/filter`,
         data: {
           methood: condition,
           page: page,

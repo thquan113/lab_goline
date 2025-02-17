@@ -2,10 +2,12 @@
     "name": "mycompany/my-app",
     "autoload": {
         "psr-4": {
-            "App\\": "app/",
+            "App\\": "App/",
             "Helpers\\": "helpers/",
             "config\\": "config/"
         }
     },
-    "require": {}
+    "require": {
+        "vlucas/phpdotenv": "^5.6"
+    }
 }

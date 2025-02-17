@@ -1,0 +1,16 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Nếu dự án nằm trong subfolder, sửa lại đường dẫn ở đây
+    RewriteBase /
+
+    # Nếu request trỏ đến file hoặc thư mục thật, thì không làm gì
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+
+    # Chuyển tất cả request vào index.php để xử lý
+    RewriteRule ^(.*)$ index.php?url=$1 [L,QSA]
+
+    # Tùy chọn: Nếu trang không tồn tại, có thể chuyển hướng đến trang lỗi 404
+    # ErrorDocument 404 /Core/error/404.php
+</IfModule>

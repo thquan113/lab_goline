@@ -10,23 +10,23 @@ class BaseModel extends Database
     protected $query;
     public function __construct()
     {
-        $this->conn = new Database();
+        $this->conn = (new Database())->getConnection();
         $this->query = "SELECT * FROM {$this->table}";
     }
     public function getAll()
     {
         try {
             $sql = "SELECT * FROM $this->table";
-            $result = $this->conn->query($sql);
-            if (!$result) {
-                throw new Exception("Lỗi truy vấn...");
-            }
-            return $result->fetch_all(MYSQLI_ASSOC);
-        } catch (Exception $e) {
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            $data = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+            return $data;
+        } catch (\PDOException $e) {
             error_log($e->getMessage());
             return [];
         }
     }
+    
     public function store($data)
     {
         try {
@@ -68,40 +68,59 @@ class BaseModel extends Database
     public function getById($id)
     {
         try {
-            $sql = "SELECT * FROM $this->table where $this->id = $id";
-            $result = $this->conn->query($sql);
-            if (!$result) {
-                throw new Exception("Lỗi truy vấn...");
-            }
-            return $result->fetch_all(MYSQLI_ASSOC);
-        } catch (Exception $e) {
+            $sql = "SELECT * FROM $this->table WHERE $this->id = :id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':id', $id, \PDO::PARAM_INT);
+            $stmt->execute();
+            $data = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+            return $data;
+        } catch (\PDOException $e) {
             error_log($e->getMessage());
             return [];
         }
     }
+    
     public function filter($page, $methood, $limit)
     {
+        // Phân tích và lấy trường và điều kiện từ chuỗi methood
         $sortArr = explode(",", $methood);
         $field = $sortArr[0];
         $condition = $sortArr[1];
-        if ($condition == "asc" || $condition == "desc") {
-            $sql = "SELECT * FROM $this->table ORDER BY $field $condition";
-            $result = $this->conn->query($sql);
-        } else {
-            $sql = "SELECT * FROM $this->table WHERE $field = '$condition'";
-            $result = $this->conn->query($sql);
+    
+        try {
+            if ($condition == "asc" || $condition == "desc") {
+                // Sắp xếp theo trường và điều kiện
+                $sql = "SELECT * FROM $this->table ORDER BY $field $condition";
+                $stmt = $this->conn->prepare($sql);
+            } else {
+                // Lọc theo trường và điều kiện
+                $sql = "SELECT * FROM $this->table WHERE $field = :condition";
+                $stmt = $this->conn->prepare($sql);
+                $stmt->bindParam(':condition', $condition, \PDO::PARAM_STR);
+            }
+    
+            // Thực thi câu lệnh
+            $stmt->execute();
+            
+            // Lấy tất cả kết quả
+            $data = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    
+            // Tạo kết quả trả về với pagination
+            $post = [
+                'countData' => count($data),
+                'data' => $this->renderPerPage($page, $data, $limit),
+                'limit' => $limit,
+            ];
+    
+            echo json_encode($post);
+    
+        } catch (\PDOException $e) {
+            // Log lỗi nếu có
+            error_log($e->getMessage());
+            echo json_encode(['error' => 'Lỗi truy vấn!']);
         }
-        $data = [];
-        while ($row = mysqli_fetch_assoc($result)) {
-            $data[] = $row;
-        }
-        $post = [
-            'countData' => count($data),
-            'data' => $this->renderPerPage($page, $data, $limit),
-            'limit' => $limit,
-        ];
-        echo json_encode($post);
     }
+    
 
     public function renderPerPage($page = null, $data = null, $limit = null)
     {
@@ -114,13 +133,31 @@ class BaseModel extends Database
     }
     public function search($key)
     {
-        $key = "%$key%";
-        $sql = "SELECT * FROM $this->table WHERE title LIKE '$key' OR city LIKE '$key' OR address LIKE '$key' LIMIT 5";
-        $result = $this->conn->query($sql);
-        if (!$result) {
-            throw new Exception("Lỗi truy vấn...");
+        try {
+            // Sử dụng dấu phần trăm để tìm kiếm theo kiểu LIKE
+            $key = "%$key%";
+            
+            // Chuẩn bị câu lệnh SQL với PDO
+            $sql = "SELECT * FROM $this->table WHERE title LIKE :key OR city LIKE :key OR address LIKE :key LIMIT 5";
+            $stmt = $this->conn->prepare($sql);
+            
+            // Gắn giá trị vào tham số
+            $stmt->bindParam(':key', $key, \PDO::PARAM_STR);
+            
+            // Thực thi câu lệnh
+            $stmt->execute();
+            
+            // Lấy tất cả kết quả
+            $data = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+            
+            return $data;
+    
+        } catch (\PDOException $e) {
+            // Log lỗi nếu có
+            error_log($e->getMessage());
+            return [];
         }
-        return $result->fetch_all(MYSQLI_ASSOC);
     }
+    
 }
 ?>

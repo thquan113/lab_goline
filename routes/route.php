@@ -1,8 +1,8 @@
 <?php
 
-namespace App;
+namespace routes;
 
-class Route
+class route
 {
     private static $routes = [];
 
@@ -43,7 +43,12 @@ class Route
     // Xử lý dispatch
     public static function dispatch()
     {
+        // $requestUri = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
+        $baseFolder = trim(str_replace($_SERVER['DOCUMENT_ROOT'], '', dirname($_SERVER['SCRIPT_NAME'])), '/');
         $requestUri = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
+        if (!empty($baseFolder) && strpos($requestUri, $baseFolder) === 0) {
+            $requestUri = trim(substr($requestUri, strlen($baseFolder)), '/');
+        }
         $requestMethod = $_SERVER['REQUEST_METHOD'];
         if ($requestMethod === 'POST' && isset($_POST['_method'])) {
             $requestMethod = strtoupper($_POST['_method']);
@@ -60,7 +65,7 @@ class Route
         }
 
         http_response_code(404);
-        echo json_encode(['message' => 'Page not found']);
+        echo json_encode(['message' => 'Page not foundss']);
     }
 
 
@@ -69,6 +74,7 @@ class Route
     {
         // Thay thế {param} bằng regex để khớp tham số động
         $pattern = preg_replace('/\{[a-zA-Z0-9_]+\}/', '([a-zA-Z0-9_-]+)', $routeUrl);
+        // var_dump($pattern); 
         return preg_match("#^$pattern$#", $requestUri);
     }
 
